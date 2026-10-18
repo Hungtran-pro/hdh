@@ -1,0 +1,173 @@
+Cluster health:
+{
+  "cluster_name" : "elk-class-project",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 288,
+  "active_shards" : 288,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "unassigned_primary_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+
+Refresh indices before measuring:
+{"_shards":{"total":250,"successful":250,"failed":0}}
+Total, source counts, parse/date failures, success percentage, and timestamp range:
+{
+  "took" : 92,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 250,
+    "successful" : 250,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 107944,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "by_source" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [
+        {
+          "key" : "apache_error",
+          "doc_count" : 56482,
+          "failures" : {
+            "doc_count" : 4478
+          }
+        },
+        {
+          "key" : "nginx",
+          "doc_count" : 51462,
+          "failures" : {
+            "doc_count" : 0
+          }
+        }
+      ]
+    },
+    "earliest" : {
+      "value" : 1.118297224E12,
+      "value_as_string" : "2005-06-09T06:07:04.000Z"
+    },
+    "latest" : {
+      "value" : 1.792317022862E12,
+      "value_as_string" : "2026-10-18T09:50:22.862Z"
+    },
+    "quality" : {
+      "buckets" : {
+        "all" : {
+          "doc_count" : 107944,
+          "failed" : {
+            "doc_count" : 4478
+          },
+          "success_percent" : {
+            "value" : 95.85155265693322
+          }
+        }
+      }
+    }
+  }
+}
+
+Sample documents:
+{
+  "took" : 35,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 250,
+    "successful" : 250,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 10000,
+      "relation" : "gte"
+    },
+    "max_score" : null,
+    "hits" : [
+      {
+        "_index" : "lab-logs-2005.06.09",
+        "_id" : "H5BpTqEBbtY6sfvUdH4E",
+        "_score" : null,
+        "_source" : {
+          "@timestamp" : "2005-06-09T06:07:04.000Z",
+          "log" : {
+            "level" : "notice"
+          },
+          "log_type" : "apache_error",
+          "event" : {
+            "original" : "[Thu Jun 09 06:07:04 2005] [notice] LDAP: Built with OpenLDAP LDAP SDK"
+          },
+          "message" : "[Thu Jun 09 06:07:04 2005] [notice] LDAP: Built with OpenLDAP LDAP SDK",
+          "tags" : [
+            "beats_input_codec_plain_applied"
+          ]
+        },
+        "sort" : [
+          1118297224000
+        ]
+      },
+      {
+        "_index" : "lab-logs-2005.06.09",
+        "_id" : "IJBpTqEBbtY6sfvUdH4E",
+        "_score" : null,
+        "_source" : {
+          "@timestamp" : "2005-06-09T06:07:04.000Z",
+          "log" : {
+            "level" : "notice"
+          },
+          "log_type" : "apache_error",
+          "event" : {
+            "original" : "[Thu Jun 09 06:07:04 2005] [notice] LDAP: SSL support unavailable"
+          },
+          "message" : "[Thu Jun 09 06:07:04 2005] [notice] LDAP: SSL support unavailable",
+          "tags" : [
+            "beats_input_codec_plain_applied"
+          ]
+        },
+        "sort" : [
+          1118297224000
+        ]
+      },
+      {
+        "_index" : "lab-logs-2005.06.09",
+        "_id" : "IZBpTqEBbtY6sfvUdH4E",
+        "_score" : null,
+        "_source" : {
+          "@timestamp" : "2005-06-09T06:07:04.000Z",
+          "log" : {
+            "level" : "notice"
+          },
+          "log_type" : "apache_error",
+          "event" : {
+            "original" : "[Thu Jun 09 06:07:04 2005] [notice] suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)"
+          },
+          "message" : "[Thu Jun 09 06:07:04 2005] [notice] suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)",
+          "tags" : [
+            "beats_input_codec_plain_applied"
+          ]
+        },
+        "sort" : [
+          1118297224000
+        ]
+      }
+    ]
+  }
+}
+
+{"status":{"overall":{"level":"available"}}}

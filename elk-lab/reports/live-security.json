@@ -1,0 +1,173 @@
+{
+  "observed_at": "2026-10-18T10:08:26.775020+00:00",
+  "checks": [
+    {
+      "check": "Elasticsearch rejects unauthenticated requests",
+      "passed": true
+    },
+    {
+      "check": "Kibana rejects unauthenticated requests",
+      "passed": true
+    },
+    {
+      "check": "Nginx rejects unauthenticated requests",
+      "passed": true
+    },
+    {
+      "check": "Nginx serves authenticated requests",
+      "passed": true
+    },
+    {
+      "check": "Nginx denies private path",
+      "passed": true
+    },
+    {
+      "check": "lab_viewer can read lab data",
+      "passed": true
+    },
+    {
+      "check": "lab_viewer can read lab dashboard",
+      "passed": true
+    },
+    {
+      "check": "lab_viewer cannot read the default space",
+      "passed": true
+    },
+    {
+      "check": "lab_viewer has read-only Elasticsearch access",
+      "passed": true
+    },
+    {
+      "check": "lab_viewer dashboard permission is scoped correctly",
+      "passed": true
+    },
+    {
+      "check": "lab_analyst can read lab data",
+      "passed": true
+    },
+    {
+      "check": "lab_analyst can read lab dashboard",
+      "passed": true
+    },
+    {
+      "check": "lab_analyst cannot read the default space",
+      "passed": true
+    },
+    {
+      "check": "lab_analyst has read-only Elasticsearch access",
+      "passed": true
+    },
+    {
+      "check": "lab_analyst dashboard permission is scoped correctly",
+      "passed": true
+    },
+    {
+      "check": "Writer can write only lab indices and cannot manage security",
+      "passed": true
+    },
+    {
+      "check": "Beats rejects clients without a client certificate",
+      "passed": true
+    },
+    {
+      "check": "Logstash monitoring rejects unauthenticated requests",
+      "passed": true
+    },
+    {
+      "check": "Elasticsearch search completed without partial results",
+      "passed": true
+    },
+    {
+      "check": "Unique real HTTPS request reaches Nginx",
+      "passed": true
+    },
+    {
+      "check": "Real request indexed with parsed fields and authenticated TLS identity",
+      "passed": true
+    },
+    {
+      "check": "Elasticsearch search completed without partial results",
+      "passed": true
+    },
+    {
+      "check": "Live indexed count increases",
+      "passed": true
+    },
+    {
+      "check": "Elasticsearch cluster is green",
+      "passed": true
+    }
+  ],
+  "live_count_before": 145,
+  "live_count_after": 150,
+  "request_to_search_seconds": 2.073,
+  "sample_document": {
+    "@version": "1",
+    "log_type": "nginx",
+    "client": {
+      "ip": "172.18.0.1"
+    },
+    "http": {
+      "version": "1.1",
+      "response": {
+        "body": {
+          "bytes": 153
+        },
+        "status_code": 404
+      },
+      "request": {
+        "referrer": "-",
+        "method": "GET"
+      }
+    },
+    "host": {
+      "name": "a5cf33c8d1b2"
+    },
+    "agent": {
+      "type": "filebeat",
+      "name": "a5cf33c8d1b2",
+      "id": "1a481952-cc44-4373-bcdf-11f99530f018",
+      "ephemeral_id": "9121b5ba-afa9-426d-b442-89f37861a0b7",
+      "version": "8.19.23"
+    },
+    "@timestamp": "2026-10-18T10:08:24.000Z",
+    "user_agent": {
+      "original": "Python-urllib/3.10"
+    },
+    "tags": [
+      "beats_input_codec_plain_applied"
+    ],
+    "input": {
+      "type": "filestream"
+    },
+    "service": {
+      "name": "nginx-live"
+    },
+    "ecs": {
+      "version": "8.0.0"
+    },
+    "message": "172.18.0.1 - demo [18/Oct/2026:10:08:24 +0000] \"GET /verification-875b2403854f45d2a38d30733aae099a HTTP/1.1\" 404 153 \"-\" \"Python-urllib/3.10\"",
+    "event": {
+      "original": "172.18.0.1 - demo [18/Oct/2026:10:08:24 +0000] \"GET /verification-875b2403854f45d2a38d30733aae099a HTTP/1.1\" 404 153 \"-\" \"Python-urllib/3.10\""
+    },
+    "url": {
+      "original": "/verification-875b2403854f45d2a38d30733aae099a"
+    },
+    "log": {
+      "file": {
+        "inode": "32",
+        "path": "/var/log/live-nginx/access.log",
+        "device_id": "42"
+      },
+      "offset": 15710
+    },
+    "log_origin": "live",
+    "tls": {
+      "version": "TLSv1.3",
+      "client": {
+        "subject": "CN=filebeat"
+      }
+    }
+  },
+  "browser_rendering_verified": false
+}

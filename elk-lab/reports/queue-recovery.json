@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-10-18T10:14:30.849741+00:00",
+  "outage_hold_seconds": 20,
+  "queue_before": 0,
+  "queue_during_outage": 7,
+  "queue_after_recovery": 0,
+  "live_source_lines": 266,
+  "live_indexed_documents": 266,
+  "cluster_status": "green",
+  "logstash_output": {
+    "successes": 266
+  },
+  "dead_letter_queue": {
+    "dropped_events": 0,
+    "expired_events": 0,
+    "last_error": "no errors",
+    "queue_size_in_bytes": 1,
+    "storage_policy": "drop_newer",
+    "max_queue_size_in_bytes": 1073741824
+  },
+  "crash_recovery_tested": false
+}

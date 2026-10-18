@@ -1,0 +1,10 @@
+NAME                     IMAGE                                                                                        COMMAND                  SERVICE        CREATED          STATUS                      PORTS
+elk-lab-es01-1           docker.elastic.co/elasticsearch/elasticsearch:8.19.23                                        "/bin/tini -- /usr/l…"   es01           13 minutes ago   Up 2 minutes (healthy)      127.0.0.1:9200->9200/tcp
+elk-lab-filebeat-1       docker.elastic.co/beats/filebeat:8.19.23                                                     "/usr/bin/tini -- /u…"   filebeat       13 minutes ago   Up 10 minutes
+elk-lab-init-users-1     docker.elastic.co/elasticsearch/elasticsearch:8.19.23                                        "/bin/tini -- /usr/l…"   init-users     13 minutes ago   Exited (0) 56 seconds ago
+elk-lab-kibana-1         docker.elastic.co/kibana/kibana:8.19.23                                                      "/bin/tini -- /usr/l…"   kibana         13 minutes ago   Up 12 minutes (healthy)     127.0.0.1:5601->5601/tcp
+elk-lab-kibana-setup-1   docker.elastic.co/elasticsearch/elasticsearch:8.19.23                                        "/bin/tini -- /usr/l…"   kibana-setup   13 minutes ago   Exited (0) 54 seconds ago
+elk-lab-logstash-1       docker.elastic.co/logstash/logstash:8.19.23                                                  "/usr/local/bin/dock…"   logstash       10 minutes ago   Up 10 minutes (healthy)     5044/tcp, 9600/tcp
+elk-lab-nginx-1          nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236    "/docker-entrypoint.…"   nginx          3 minutes ago    Up 3 minutes (healthy)      127.0.0.1:8443->8443/tcp
+elk-lab-setup-1          docker.elastic.co/elasticsearch/elasticsearch:8.19.23                                        "/bin/tini -- /usr/l…"   setup          11 minutes ago   Exited (0) 57 seconds ago
+elk-lab-traffic-1        python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4   "python -u /app/traf…"   traffic        3 minutes ago    Up 2 minutes

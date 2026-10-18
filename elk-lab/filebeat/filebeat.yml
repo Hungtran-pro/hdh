@@ -1,0 +1,66 @@
+filebeat.inputs:
+  - type: filestream
+    id: live-nginx
+    enabled: true
+    paths: [/var/log/live-nginx/access.log*]
+    prospector.scanner.check_interval: 1s
+    prospector.scanner.fingerprint.length: 128
+    fields_under_root: true
+    fields:
+      log_type: nginx
+      log_origin: live
+      service.name: nginx-live
+
+  - type: filestream
+    id: public-nginx
+    enabled: true
+    paths:
+      - /logs/nginx/*.log
+    fields_under_root: true
+    fields:
+      log_type: nginx
+      log_origin: public_dataset
+      service.name: nginx
+
+  - type: filestream
+    id: public-apache-error
+    enabled: true
+    paths:
+      - /logs/apache/*.log
+    fields_under_root: true
+    fields:
+      log_origin: public_dataset
+      log_type: apache_error
+      service.name: apache
+
+  - type: filestream
+    id: optional-spring
+    enabled: true
+    paths:
+      - /logs/spring/*.log
+    parsers:
+      - multiline:
+          type: pattern
+          pattern: '^\d{4}-\d{2}-\d{2}[ T]'
+          negate: true
+          match: after
+          max_lines: 1000
+          timeout: 5s
+    fields_under_root: true
+    fields:
+      log_origin: application
+      log_type: spring
+      service.name: spring-boot
+
+output.logstash:
+  hosts: ["logstash:5044"]
+  ssl.certificate_authorities: ["/usr/share/filebeat/ca/ca/ca.crt"]
+  ssl.certificate: /usr/share/filebeat/client-certs/filebeat.crt
+  ssl.key: /usr/share/filebeat/client-certs/filebeat.key
+  ssl.verification_mode: full
+  bulk_max_size: 128
+queue.mem:
+  events: 1024
+  flush.min_events: 128
+  flush.timeout: 1s
+logging.level: info

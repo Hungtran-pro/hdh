@@ -1,0 +1,7 @@
+NAME                   IMAGE                                                   COMMAND                  SERVICE      CREATED          STATUS                     PORTS
+elk-lab-es01-1         docker.elastic.co/elasticsearch/elasticsearch:8.19.23   "/bin/tini -- /usr/l…"   es01         12 minutes ago   Up 12 minutes (healthy)    127.0.0.1:9200->9200/tcp
+elk-lab-filebeat-1     docker.elastic.co/beats/filebeat:8.19.23                "/usr/bin/tini -- /u…"   filebeat     12 minutes ago   Up 2 minutes
+elk-lab-init-users-1   docker.elastic.co/elasticsearch/elasticsearch:8.19.23   "/bin/tini -- /usr/l…"   init-users   3 minutes ago    Exited (0) 3 minutes ago
+elk-lab-kibana-1       docker.elastic.co/kibana/kibana:8.19.23                 "/bin/tini -- /usr/l…"   kibana       3 minutes ago    Up 3 minutes (healthy)     127.0.0.1:5601->5601/tcp
+elk-lab-logstash-1     docker.elastic.co/logstash/logstash:8.19.23             "/usr/local/bin/dock…"   logstash     3 minutes ago    Up 3 minutes (healthy)     5044/tcp, 9600/tcp
+elk-lab-setup-1        docker.elastic.co/elasticsearch/elasticsearch:8.19.23   "/bin/tini -- /usr/l…"   setup        3 minutes ago    Exited (0) 3 minutes ago

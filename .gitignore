@@ -1,0 +1,14 @@
+# Local secrets and deployment artifacts
+.env
+.env.*
+!.env.example
+.local/
+runtime/
+certs/
+*.key
+*.p12
+*.pfx
+*.jks
+*.zip
+.DS_Store
+__pycache__/

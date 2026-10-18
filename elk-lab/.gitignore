@@ -1,0 +1,10 @@
+.env
+certs/
+*.zip
+.DS_Store
+__pycache__/
+data/**/*.log
+data/SHA256SUMS
+data/SOURCES.txt
+runtime/
+.local/

@@ -1,0 +1,131 @@
+[
+  {
+    "type": "visualization",
+    "id": "live-count",
+    "attributes": {
+      "title": "Live requests",
+      "visState": "{\"title\": \"Live requests\", \"type\": \"metric\", \"params\": {}, \"aggs\": [{\"id\": \"1\", \"enabled\": true, \"type\": \"count\", \"schema\": \"metric\", \"params\": {}}]}",
+      "uiStateJSON": "{}",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\": {\"query\": \"log_origin: \\\"live\\\"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+      }
+    },
+    "references": [
+      {
+        "id": "elk-live-logs",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "visualization",
+    "id": "live-timeline",
+    "attributes": {
+      "title": "Live requests over time",
+      "visState": "{\"title\": \"Live requests over time\", \"type\": \"histogram\", \"params\": {\"addTooltip\": true, \"addLegend\": false}, \"aggs\": [{\"id\": \"1\", \"enabled\": true, \"type\": \"count\", \"schema\": \"metric\", \"params\": {}}, {\"id\": \"2\", \"enabled\": true, \"type\": \"date_histogram\", \"schema\": \"segment\", \"params\": {\"field\": \"@timestamp\", \"interval\": \"auto\", \"min_doc_count\": 1}}]}",
+      "uiStateJSON": "{}",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\": {\"query\": \"log_origin: \\\"live\\\"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+      }
+    },
+    "references": [
+      {
+        "id": "elk-live-logs",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "visualization",
+    "id": "live-status",
+    "attributes": {
+      "title": "HTTP status codes",
+      "visState": "{\"title\": \"HTTP status codes\", \"type\": \"pie\", \"params\": {\"addTooltip\": true, \"addLegend\": true, \"isDonut\": true}, \"aggs\": [{\"id\": \"1\", \"enabled\": true, \"type\": \"count\", \"schema\": \"metric\", \"params\": {}}, {\"id\": \"2\", \"enabled\": true, \"type\": \"terms\", \"schema\": \"segment\", \"params\": {\"field\": \"http.response.status_code\", \"size\": 10, \"order\": \"desc\", \"orderBy\": \"1\"}}]}",
+      "uiStateJSON": "{}",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\": {\"query\": \"log_origin: \\\"live\\\"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+      }
+    },
+    "references": [
+      {
+        "id": "elk-live-logs",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "search",
+    "id": "live-events",
+    "attributes": {
+      "title": "Live Nginx events",
+      "columns": [
+        "@timestamp",
+        "http.request.method",
+        "url.original",
+        "http.response.status_code",
+        "service.name"
+      ],
+      "sort": [
+        [
+          "@timestamp",
+          "desc"
+        ]
+      ],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\": {\"query\": \"log_origin: \\\"live\\\"\", \"language\": \"kuery\"}, \"filter\": [], \"indexRefName\": \"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+      }
+    },
+    "references": [
+      {
+        "id": "elk-live-logs",
+        "type": "index-pattern",
+        "name": "kibanaSavedObjectMeta.searchSourceJSON.index"
+      }
+    ]
+  },
+  {
+    "type": "dashboard",
+    "id": "elk-live",
+    "attributes": {
+      "title": "ELK Live Service",
+      "description": "Real authenticated HTTPS requests to the lab Nginx service. Refreshes every 5 seconds.",
+      "panelsJSON": "[{\"version\": \"8.19.23\", \"type\": \"visualization\", \"panelIndex\": \"0\", \"panelRefName\": \"panel_0\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 12, \"h\": 10, \"i\": \"0\"}, \"embeddableConfig\": {}}, {\"version\": \"8.19.23\", \"type\": \"visualization\", \"panelIndex\": \"1\", \"panelRefName\": \"panel_1\", \"gridData\": {\"x\": 12, \"y\": 0, \"w\": 12, \"h\": 10, \"i\": \"1\"}, \"embeddableConfig\": {}}, {\"version\": \"8.19.23\", \"type\": \"visualization\", \"panelIndex\": \"2\", \"panelRefName\": \"panel_2\", \"gridData\": {\"x\": 24, \"y\": 0, \"w\": 24, \"h\": 10, \"i\": \"2\"}, \"embeddableConfig\": {}}, {\"version\": \"8.19.23\", \"type\": \"search\", \"panelIndex\": \"3\", \"panelRefName\": \"panel_3\", \"gridData\": {\"x\": 0, \"y\": 10, \"w\": 48, \"h\": 14, \"i\": \"3\"}, \"embeddableConfig\": {}}]",
+      "optionsJSON": "{\"useMargins\": true, \"syncColors\": false, \"hidePanelTitles\": false}",
+      "timeRestore": true,
+      "timeFrom": "now-15m",
+      "timeTo": "now",
+      "refreshInterval": {
+        "pause": false,
+        "value": 5000
+      },
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\": {\"language\": \"kuery\", \"query\": \"log_origin: \\\"live\\\"\"}, \"filter\": []}"
+      }
+    },
+    "references": [
+      {
+        "id": "live-count",
+        "type": "visualization",
+        "name": "panel_0"
+      },
+      {
+        "id": "live-status",
+        "type": "visualization",
+        "name": "panel_1"
+      },
+      {
+        "id": "live-timeline",
+        "type": "visualization",
+        "name": "panel_2"
+      },
+      {
+        "id": "live-events",
+        "type": "search",
+        "name": "panel_3"
+      }
+    ]
+  }
+]
